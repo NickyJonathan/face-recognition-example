@@ -1,31 +1,61 @@
-# Real Time Face Recognition (OpenCV)
+cat <<EOL > README.md
+# Dokumentasi Implementasi Model Face Recognition
 
-Create a fast real-time face recognition app with a few lines of Python code.
+## Persyaratan:
+- Python sudah terinstall di komputer Anda.
+- Perangkat kamera (bisa menggunakan kamera laptop atau webcam).
 
-![gif](gif.gif)
+## Langkah-Langkah:
 
-## Steps:
+### 1. Ekstrak File
+Ekstrak file RAR yang berisi kode program. Pastikan file telah diekstrak di lokasi yang mudah diakses.
 
-`face_taker.py`
+### 2. Buka Terminal atau Command Prompt
+- Buka **Terminal** untuk pengguna Linux atau macOS.
+- Buka **Command Prompt (CMD)** untuk pengguna Windows.
+- Arahkan terminal atau CMD ke folder hasil ekstraksi menggunakan perintah:
+  \`\`\`bash
+  cd /path/ke/folder/hasil/ekstrak
+  \`\`\`
+  Gantilah \`/path/ke/folder/hasil/ekstrak\` dengan path folder yang sesuai.
 
-1) Take pictures using the `face_taker.py` script. After you enter the user name, the script will save 30 images of your face in the `images` folder and `names.json` file with association between ID number and user name. The ID number represents a single face. Note: Make sure your face is centered. The window will collapse when all the 30 pictures are taken.
+### 3. Instalasi Library
+Instal library yang dibutuhkan dengan perintah berikut:
+\`\`\`bash
+pip install opencv-python opencv-contrib-python pillow
+\`\`\`
+Library yang diinstal adalah:
+- **opencv-python**: Untuk pengolahan gambar dan video.
+- **opencv-contrib-python**: Untuk algoritma tambahan di OpenCV, termasuk face recognition.
+- **pillow**: Untuk mengelola gambar.
 
-`face_train.py`
+### 4. Capture Wajah Mahasiswa
+Setelah instalasi selesai, jalankan program untuk mengambil gambar wajah:
+\`\`\`bash
+python face_taker.py
+\`\`\`
+Saat diminta, masukkan **username** mahasiswa yang akan di-capture wajahnya. Program akan membuka kamera dan mengambil beberapa gambar wajah.
 
-2) The `face_tain.py` script will train a model to recognize all the faces from the 30 images taken using `face_taker.py` and save the training output in the `trainer.yml` file.
+Ulangi langkah ini untuk setiap mahasiswa yang ingin Anda masukkan ke dalam sistem pengenalan wajah.
 
-`face_recognizer.py`
+### 5. Melatih Model Pengenalan Wajah
+Setelah gambar wajah dari beberapa mahasiswa sudah berhasil diambil, lakukan pelatihan model dengan menjalankan:
+\`\`\`bash
+python face_train.py
+\`\`\`
+Proses ini akan melatih model menggunakan gambar wajah yang sudah diambil.
 
-3) The `face_recognizer.py` is the main script. The script will recognize the face according to the ID. i.e., If Joe has an ID = 1, their name should appear in the dictionary of `names.json` as attribute 1 like such:
+### 6. Menjalankan Pengenalan Wajah
+Setelah pelatihan model selesai, jalankan program pengenalan wajah:
+\`\`\`bash
+python face_recognizer.py
+\`\`\`
+Program ini akan membuka kamera dan mendeteksi wajah-wajah yang sudah pernah dicapture sebelumnya.
 
-```json
-{
-    "1": "Joe"
-}
-```
+## Catatan:
+- Pastikan pencahayaan saat mengambil gambar wajah cukup terang agar model pengenalan wajah bekerja lebih baik.
+- Jika ada masalah saat instalasi library atau menjalankan program, pastikan Python dan pip sudah terpasang dengan benar.
 
-Requirements:
-
-- `pip install opencv-python`
-- `pip install opencv-contrib-python --upgrade` or `pip install opencv-contrib-python`
-- `pip install pillow`
+## Penutup
+Dengan mengikuti langkah-langkah di atas, Anda dapat melakukan capture wajah, melatih model pengenalan wajah, dan mendeteksi wajah menggunakan kamera secara real-time.
+EOL
